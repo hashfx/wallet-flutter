@@ -1,0 +1,27 @@
+image:
+  file: .gitpod.dockerfile
+tasks:
+- command: |
+    mkdir -p /home/gitpod/.android
+    touch /home/gitpod/.android/repositories.cfg
+    export PATH=/usr/lib/dart/bin:$FLUTTER_HOME/bin:$ANDROID_HOME/bin:$PATH
+    # /home/gitpod/android-sdk/tools/bin/sdkmanager "platform-tools" "platforms;android-33" "build-tools;33.0.3"
+    echo "y" | sdkmanager "platforms;android-33" "build-tools;33.0.3" "platform-tools" "tools" # Adjust versions as needed
+vscode:
+  extensions:
+    - Dart-Code.flutter
+    - Dart-Code.dart-code
+    - JuanBlanco.solidity
+
+# image: gitpod/workspace-full
+
+# tasks:
+#   flutter_setup:
+#     command: |
+#       curl -L https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_v3.3.7-stable.tar.xz | tar -xvf -
+#       export PATH="$HOME/flutter/bin:$PATH"
+#       flutter doctor
+#       # Install desired Android SDK components
+#       echo "y" | sdkmanager "platforms;android-33" "build-tools;33.0.3" "platform-tools" "tools" # Adjust versions as needed
+#       flutter config --android-sdk=/home/gitpod/Android && flutter doctor --android-licenses
+#       # Add custom setup commands here, if needed
